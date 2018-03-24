@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Geek Screen</title>
+    <style>
+		@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+		*{
+		  box-sizing: border-box;
+		}
+		canvas {
+		  width: 100%;
+		  height: 100%;
+		  max-height: 1200px;
+		  position: absolute;
+		  top: -168px;
+		  z-index: 90;
+		  trasnform: rotate(90deg);
+		}
+		html, body{
+		  width: 1920px;
+		  height: 1095px;
+		  margin: 0;
+		  padding: 0;
+		  background-image: url('https://image.ibb.co/kekFaS/sea_1.png');
+		  background-position: center bottom;
+		  background-size: 1920px 320px;
+		  background-repeat: no-repeat;
+		  overflow: hidden;
+		  font-family: 'Press Start 2P';
+		  color: #fff;
+		}
+		#logo{
+		  width: 500px;
+		  position: absolute;
+		  top: 30%;
+		  left: 50%;
+		  z-index: 100;
+		  transform: translate(-56%, -50%);
+		}
+		#cloud{
+		  height: 500px;
+		  position: absolute;
+		  top: calc(70% - 480px);
+		  right: -100%;
+		  z-index: 100;
+		  animation: breeze 60s infinite ease-out;
+		}
+		@keyframes breeze{
+		  to{
+			right: 100%;
+		  }
+		}
+		@keyframes pulse{
+		  to{
+			font-size: 28px;
+		  }
+		}
+		#start{
+		  position: absolute;
+		  top: calc(35% + 225px);
+		  z-index: 100;
+		  width: 100%;
+		  text-align: center;
+		  font-size: 25px;
+		  animation: pulse 1s infinite ease-in-out alternate;
+		  text-shadow:
+		   -2px -2px 0 #4F317A,  
+			2px -2px 0 #4F317A,
+			-2px 2px 0 #4F317A,
+			 2px 2px 0 #4F317A;
+		}
+		#copy{
+		  position: absolute;
+		  bottom: 50px;
+		  z-index: 100;
+		  width: 100%;
+		  text-align: center;
+		  font-size: 20px;
+		  text-shadow:
+		   -2px -2px 0 #4F317A,  
+			2px -2px 0 #4F317A,
+			-2px 2px 0 #4F317A,
+			 2px 2px 0 #4F317A;
+		}
+		#topGrad{
+		  height: calc(100% - 30%);
+		  width: 100%;
+		  background: linear-gradient(to bottom, rgba(44,39,79,1) 0%,rgba(79,49,122,1) 100%);
+		  position: absolute;
+		  top: 0;
+		}
+		#line1{
+		  height: 20px;
+		  width: 100%;
+		  background: #d27eb1;
+		  position: absolute;
+		  top: 70%;
+		  z-index: 101;
+		}
+		#line2{
+		  height: 20px;
+		  width: 100%;
+		  background: #d27eb1;
+		  position: absolute;
+		  top: calc(70% - 20px);
+		  opacity: .7;
+		  z-index: 101;
+		}
+		#line3{
+		  height: 20px;
+		  width: 100%;
+		  background: #d27eb1;
+		  position: absolute;
+		  top: calc(70% - 40px);
+		  opacity: .5;
+		  z-index: 101;
+		}
+		#line4{
+		  height: 20px;
+		  width: 100%;
+		  background: #d27eb1;
+		  position: absolute;
+		  top: calc(70% - 60px);
+		  opacity: .3;
+		  z-index: 101;
+		}
+    </style>
+    </head>
+    <body>
+		<img id="cloud" src="https://image.ibb.co/bSaTUn/cloud.png" />
+		<img id="logo" src="https://image.ibb.co/kQfaQS/geek_04.png" />
+		<div id="start">PRESS START</div>
+		<div id="topGrad"></div>
+		<div id="line4"></div>
+		<div id="line3"></div>
+		<div id="line2"></div>
+		<div id="line1"></div>
+		<div id="copy">&copy; 2018 THE GEEK CHICK </div>
+		<canvas id='canvas'></canvas>
+		<script>
+		var canvas;
+		var ctx;
+		var config = {
+		  sparkFreq: 1,
+		  meanSparkSize: 0.010,
+		  meanSparkLife: 300,
+		  meanSparkVelocity: [ 2, 6 ],
+		  sparkSizeVariation: 5,
+		  sparkBlink: 10, // Lower is more blink
+		  floorHeight: 0.15
+		};
+
+		var resize = window.resize = function() {
+		  canvas.height = document.body.offsetHeight;
+		  canvas.width = document.body.offsetWidth;
+		};
+
+		window.onload = function() {
+		  canvas = document.getElementById('canvas');
+		  ctx = canvas.getContext('2d');
+		  resize();
+
+		  config.meanSparkSize = canvas.width*config.meanSparkSize;
+
+		  var fire = new Fire(ctx, canvas, canvas.height-canvas.height*config.floorHeight, config);
+
+		  var loop = function() {
+			window.requestAnimFrame(loop);
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			fire.update();
+			for (var i=0; i<config.sparkFreq; i++) {
+			  fire.spark(Math.random()*canvas.width);
+			}
+		  };
+
+		  window.requestAnimFrame = function(){
+			return window.requestAnimationFrame || 
+			window.webkitRequestAnimationFrame || 
+			window.mozRequestAnimationFrame ||
+			window.oRequestAnimationFrame ||
+			window.msRequestAnimationFrame ||
+			function(a) { window.setTimeout(a,1E3/60); };
+		  }();
+
+		  loop();
+		};
+
+		//////////////////////////////////////////////////
+		var Fire = function Fire(ctx, canvas, y, config) {
+		  this.ctx = ctx;
+		  this.canvas = canvas;
+		  this.y = y;
+		  this.r = 255;
+		  this.config = config;
+		  this.sparks = [ ];
+		};
+		Fire.prototype.spark = function(x) {
+		  this.sparks.push(new Spark(this.ctx, x, this.y, this.config));
+		};
+		Fire.prototype.updateColor = function() {
+		  this.r += (Math.random()-0.5)*10;
+		  this.r = Math.round(Math.min(80, Math.max(60, this.r)));
+		};
+		Fire.prototype.update = function() {
+		  this.updateColor();
+		  this.ctx.beginPath();
+		  this.ctx.rect(0, this.y, this.canvas.width, this.config.meanSparkSize);
+		  this.ctx.fillStyle = 'rgba(210, 126, 177, 0)';
+		  this.ctx.fill();
+
+		  for (var i=0; i<this.sparks.length; i++) {
+			if (this.sparks[i].update()) { // Spark died
+			  this.sparks.splice(i, 1);
+			}
+		  }
+		};
+
+		///////////////////////////////////////////////
+		var Spark = function Spark(ctx, x, y, config) {
+		  this.ctx = ctx;
+		  this.pos = [ x, y ];
+		  this.size = config.meanSparkSize+(Math.random()-0.5)*config.sparkSizeVariation;
+		  this.v = [
+			config.meanSparkVelocity[0]*(Math.random()-0.5),
+			-1*config.meanSparkVelocity[1]*Math.random()
+		  ];
+		  this.c = [
+			Math.floor(Math.random()*155)+100,
+			Math.floor(Math.random()*80),
+			0
+		  ];
+		  this.life = this.lifeOrig = Math.floor(config.meanSparkLife*Math.random());
+		  this.config = config;
+		};
+		Spark.prototype.move = function() {
+		  for (var i=0; i<2; i++) {
+			this.pos[i] += this.v[i]*(1-this.life/this.lifeOrig);
+		  }
+		};
+		Spark.prototype.getAlpha = function() {
+		  return Math.sqrt(this.life/this.lifeOrig)+((Math.random()-0.5)/this.config.sparkBlink);
+		};
+		Spark.prototype.update = function() {
+		  this.move();
+		  if (!(this.life--)) { return true; }
+		  this.ctx.beginPath();
+		  this.ctx.rect(this.pos[0], this.pos[1], this.size, this.size);
+		  this.ctx.fillStyle = 'rgba(210, 126, 177, '+this.getAlpha()+')';
+		  this.ctx.fill();
+		};
+		</script>
+    </body>
+  </html>
