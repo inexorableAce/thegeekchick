@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Geek Overlay</title>
+    <style>
+		@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+#container{
+  width: 250px;
+  top: 25%;
+  left: 0;
+  position: absolute;
+}
+#circle{
+  position: absolute;
+  top: 170px;
+  left: -100%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(44,39,79,1) 0%,rgba(44,39,79,0.74) 18%,rgba(44,39,79,0) 69%,rgba(44,39,79,0) 98%);
+}
+#logo{
+  width: calc(100% - 20px);
+}
+.lines{
+  width: 100%;
+  font-family: 'Press Start 2P';
+  color: #fff;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.line{
+  height: 10px;
+  background: #efefef;
+}
+
+/* DONO */
+#topDonation .line.one{
+  background: #CF7AAF;
+  width: 0%;
+  animation: 30s slide ease-out forwards infinite; 
+}
+#topDonation .line.two{
+  background: #B15299;
+  width: 0%;
+  padding-right: 10px;
+  animation: 30s slide .25s ease-out forwards infinite;
+}
+#topDonation .line.three{
+  background: #8D398C;
+  width: 0%;
+  padding-right: 20px;
+  animation: 30s slide .5s ease-out forwards infinite;
+}
+#topDonation.lines p{
+position: absolute;
+top: 0;
+margin: 8px 16px;
+text-align: left;
+opacity: 0;
+width: calc(100% - 20px);
+animation: 30s fade ease-out forwards infinite;
+font-size: 15px;
+}
+
+/* rDONO */
+#rDonation .line.one{
+  background: #CF7AAF;
+  width: 0%;
+  animation: 30s slide 6s ease-out forwards infinite; 
+}
+#rDonation .line.two{
+  background: #B15299;
+  width: 0%;
+  padding-right: 10px;
+  animation: 30s slide 6.25s ease-out forwards infinite;
+}
+#rDonation .line.three{
+  background: #8D398C;
+  width: 0%;
+  padding-right: 20px;
+  animation: 30s slide 6.5s ease-out forwards infinite;
+}
+#rDonation.lines p{
+position: absolute;
+top: 0;
+margin: 8px 16px;
+text-align: left;
+opacity: 0;
+width: calc(100% - 20px);
+animation: 30s fade 6s ease-out forwards infinite;
+font-size: 15px;
+}
+
+/* BITS */
+#topBits .line.one{
+  background: #CF7AAF;
+  width: 0%;
+  animation: 30s slide 12s ease-out forwards infinite; 
+}
+#topBits .line.two{
+  background: #B15299;
+  width: 0%;
+  padding-right: 10px;
+  animation: 30s slide 12.25s ease-out forwards infinite;
+}
+#topBits .line.three{
+  background: #8D398C;
+  width: 0%;
+  padding-right: 20px;
+  animation: 30s slide 12.5s ease-out forwards infinite;
+}
+#topBits.lines p{
+position: absolute;
+top: 0;
+margin: 8px 16px;
+text-align: left;
+opacity: 0;
+width: calc(100% - 20px);
+animation: 30s fade 12s ease-out forwards infinite;
+font-size: 15px;
+}
+
+/* rBITS */
+#rBits .line.one{
+  background: #CF7AAF;
+  width: 0%;
+  animation: 30s slide 18s ease-out forwards infinite; 
+}
+#rBits .line.two{
+  background: #B15299;
+  width: 0%;
+  padding-right: 10px;
+  animation: 30s slide 18.25s ease-out forwards infinite;
+}
+#rBits .line.three{
+  background: #8D398C;
+  width: 0%;
+  padding-right: 20px;
+  animation: 30s slide 18.5s ease-out forwards infinite;
+}
+#rBits.lines p{
+position: absolute;
+top: 0;
+margin: 8px 16px;
+text-align: left;
+opacity: 0;
+width: calc(100% - 20px);
+animation: 30s fade 18s ease-out forwards infinite;
+font-size: 15px;
+}
+
+/* rSUB */
+#rSub .line.one{
+  background: #CF7AAF;
+  width: 0%;
+  animation: 30s slide 24s ease-out forwards infinite; 
+}
+#rSub .line.two{
+  background: #B15299;
+  width: 0%;
+  padding-right: 10px;
+  animation: 30s slide 24.25s ease-out forwards infinite;
+}
+#rSub .line.three{
+  background: #8D398C;
+  width: 0%;
+  padding-right: 20px;
+  animation: 30s slide 24.5s ease-out forwards infinite;
+}
+#rSub.lines p{
+position: absolute;
+top: 0;
+margin: 8px 16px;
+text-align: left;
+opacity: 0;
+width: calc(100% - 20px);
+animation: 30s fade 24s ease-out forwards infinite;
+font-size: 15px;
+}
+@keyframes slide{
+  0%{
+    width: 0%;
+  }
+  1%{
+  width: 100%;
+  }
+  20%{
+   width: 100%;
+  }
+  21%{
+    width: 0%;
+  }
+  100%{
+    width: 0%;
+  }
+}
+@keyframes fade{
+  0%{
+    opacity: 0;
+  }
+  2%{
+    opacity: 0;
+  }
+  3%{
+  opacity: 1;
+  }
+  20%{
+   opacity: 1;
+  }
+  21%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+    </style>
+    </head>
+    <body>
+		<div id="container">
+		  <div id="circle"></div>
+		  <img id="logo" src="https://image.ibb.co/dHa9N7/GEEKOVERLAY.png" />
+		  <div class="lines" id="topDonation">
+			<p>TOP DONATION</p>
+			<div class="line one"></div>
+			<div class="line two"></div>
+			<div class="line three"></div>
+		  </div>
+		  
+		  <div class="lines" id="rDonation">
+			<p>RECENT DONATION</p>
+			<div class="line one"></div>
+			<div class="line two"></div>
+			<div class="line three"></div>
+		  </div>
+		  
+		  <div class="lines" id="topBits">
+			<p>TOP BITS</p>
+			<div class="line one"></div>
+			<div class="line two"></div>
+			<div class="line three"></div>
+		  </div>
+		  
+		  <div class="lines" id="rBits">
+			<p>RECENT BITS</p>
+			<div class="line one"></div>
+			<div class="line two"></div>
+			<div class="line three"></div>
+		  </div>
+		  
+		  <div class="lines" id="rSub">
+			<p>RECENT SUB</p>
+			<div class="line one"></div>
+			<div class="line two"></div>
+			<div class="line three"></div>
+		  </div>
+		</div>
+    </body>
+  </html>
