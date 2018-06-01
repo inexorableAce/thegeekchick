@@ -6,36 +6,69 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Geek Overlay</title>
     <style>
-		@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+		@import url('https://fonts.googleapis.com/css?family=Press+Start+2P|Roboto');
 #container{
-  width: 250px;
-  top: 25%;
-  left: 0;
+  width: 800px;
+  top: 570px;
+  left: 80px;
   position: absolute;
-}
-#circle{
-  position: absolute;
-  top: 170px;
-  left: -100%;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: -webkit-radial-gradient(center, ellipse cover, rgba(44,39,79,1) 0%,rgba(44,39,79,0.74) 18%,rgba(44,39,79,0) 69%,rgba(44,39,79,0) 98%);
 }
 #logo{
-  width: calc(100% - 20px);
+  width: 300px;
+  position: absolute; 
+  top: 400px;
+  left: -45px;
+  z-index: 999;
+}
+.frame{
+width: 800px;
+height: 450px;
+border: 20px solid #CF7AAF;
+position: absolute;
+top: 100px;
+left: 100px;
 }
 .lines{
   width: 100%;
   font-family: 'Press Start 2P';
   color: #fff;
-  position: relative;
-  margin-bottom: 50px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  
 }
-
+.vertOne{
+	background: #B15299;
+	width: 20px;
+	height: 480px;
+	position: absolute;
+	left: 80px; 
+	top: 120px;
+	z-index: 777;
+}
+.vertTwo{
+	background: #8D398C;
+	width: 20px;
+	height: 480px;
+	position: absolute;
+	left: 60px; 
+	top: 140px;
+	z-index: 777;
+}
 .line{
-  height: 10px;
+  height: 20px;
   background: #efefef;
+}
+.lines p{
+position: absolute;
+top: 0;
+margin: 10px 120px;
+text-align: left;
+opacity: 0;
+width: calc(100% - 20px);
+font-size: 30px;
+line-height: 40px;
+text-transform: uppercase;
 }
 
 /* DONO */
@@ -47,7 +80,7 @@
 #topDonation .line.two{
   background: #B15299;
   width: 0%;
-  padding-right: 10px;
+  padding-right: 40px;
   animation: 30s slide .25s ease-out forwards infinite;
 }
 #topDonation .line.three{
@@ -57,14 +90,7 @@
   animation: 30s slide .5s ease-out forwards infinite;
 }
 #topDonation.lines p{
-position: absolute;
-top: 0;
-margin: 8px 16px;
-text-align: left;
-opacity: 0;
-width: calc(100% - 20px);
 animation: 30s fade ease-out forwards infinite;
-font-size: 15px;
 }
 
 /* rDONO */
@@ -76,7 +102,7 @@ font-size: 15px;
 #rDonation .line.two{
   background: #B15299;
   width: 0%;
-  padding-right: 10px;
+  padding-right: 40px;
   animation: 30s slide 6.25s ease-out forwards infinite;
 }
 #rDonation .line.three{
@@ -86,14 +112,7 @@ font-size: 15px;
   animation: 30s slide 6.5s ease-out forwards infinite;
 }
 #rDonation.lines p{
-position: absolute;
-top: 0;
-margin: 8px 16px;
-text-align: left;
-opacity: 0;
-width: calc(100% - 20px);
 animation: 30s fade 6s ease-out forwards infinite;
-font-size: 15px;
 }
 
 /* BITS */
@@ -105,7 +124,7 @@ font-size: 15px;
 #topBits .line.two{
   background: #B15299;
   width: 0%;
-  padding-right: 10px;
+  padding-right: 40px;
   animation: 30s slide 12.25s ease-out forwards infinite;
 }
 #topBits .line.three{
@@ -115,14 +134,7 @@ font-size: 15px;
   animation: 30s slide 12.5s ease-out forwards infinite;
 }
 #topBits.lines p{
-position: absolute;
-top: 0;
-margin: 8px 16px;
-text-align: left;
-opacity: 0;
-width: calc(100% - 20px);
 animation: 30s fade 12s ease-out forwards infinite;
-font-size: 15px;
 }
 
 /* rBITS */
@@ -134,7 +146,7 @@ font-size: 15px;
 #rBits .line.two{
   background: #B15299;
   width: 0%;
-  padding-right: 10px;
+  padding-right: 40px;
   animation: 30s slide 18.25s ease-out forwards infinite;
 }
 #rBits .line.three{
@@ -144,14 +156,7 @@ font-size: 15px;
   animation: 30s slide 18.5s ease-out forwards infinite;
 }
 #rBits.lines p{
-position: absolute;
-top: 0;
-margin: 8px 16px;
-text-align: left;
-opacity: 0;
-width: calc(100% - 20px);
 animation: 30s fade 18s ease-out forwards infinite;
-font-size: 15px;
 }
 
 /* rSUB */
@@ -163,7 +168,7 @@ font-size: 15px;
 #rSub .line.two{
   background: #B15299;
   width: 0%;
-  padding-right: 10px;
+  padding-right: 40px;
   animation: 30s slide 24.25s ease-out forwards infinite;
 }
 #rSub .line.three{
@@ -173,14 +178,13 @@ font-size: 15px;
   animation: 30s slide 24.5s ease-out forwards infinite;
 }
 #rSub.lines p{
-position: absolute;
-top: 0;
-margin: 8px 16px;
-text-align: left;
-opacity: 0;
-width: calc(100% - 20px);
 animation: 30s fade 24s ease-out forwards infinite;
-font-size: 15px;
+}
+.content{
+	font-family: 'Roboto';
+	 letter-spacing: 1.5px;
+	 font-size: 25px;
+	 text-transform: uppercase;
 }
 @keyframes slide{
   0%{
@@ -189,10 +193,10 @@ font-size: 15px;
   1%{
   width: 100%;
   }
-  20%{
+  15%{
    width: 100%;
   }
-  21%{
+  16%{
     width: 0%;
   }
   100%{
@@ -209,10 +213,10 @@ font-size: 15px;
   3%{
   opacity: 1;
   }
-  20%{
+  15%{
    opacity: 1;
   }
-  21%{
+  16%{
     opacity: 0;
   }
   100%{
@@ -222,43 +226,91 @@ font-size: 15px;
     </style>
     </head>
     <body>
+		<div class="vertOne"></div>
+		<div class="vertTwo"></div>
+		<div class="frame"></div>
+		<img id="logo" src="lib/GEEKOVERLAY.png" />
 		<div id="container">
-		  <div id="circle"></div>
-		  <img id="logo" src="lib/GEEKOVERLAY.png" />
+		  
 		  <div class="lines" id="topDonation">
-			<p>TOP DONATION</p>
+			<p>Twitch: thegeekchick</p>
 			<div class="line one"></div>
 			<div class="line two"></div>
 			<div class="line three"></div>
+			
 		  </div>
 		  
 		  <div class="lines" id="rDonation">
-			<p>RECENT DONATION</p>
+			<p>Facebook: geekchicktv</p>
 			<div class="line one"></div>
 			<div class="line two"></div>
 			<div class="line three"></div>
+			
 		  </div>
 		  
 		  <div class="lines" id="topBits">
-			<p>TOP BITS</p>
+			<p>twitter: geekchicktv</p>
 			<div class="line one"></div>
 			<div class="line two"></div>
 			<div class="line three"></div>
+			
 		  </div>
 		  
 		  <div class="lines" id="rBits">
-			<p>RECENT BITS</p>
+			<p>youtube: TheGeekChick</p>
 			<div class="line one"></div>
 			<div class="line two"></div>
 			<div class="line three"></div>
+			
 		  </div>
 		  
 		  <div class="lines" id="rSub">
-			<p>RECENT SUB</p>
+			<p>instagram: geekchicktv</p>
 			<div class="line one"></div>
 			<div class="line two"></div>
 			<div class="line three"></div>
+			
 		  </div>
 		</div>
     </body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js' type='text/javascript'></script>
+	<script type = 'text/javascript'>
+		var topD = 0;
+		var topB = 0;
+		
+		// SOCKET TOKEN
+		const socketToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiI6IjFERjc5RkVGRkE2QTJBOTIwOTEyIiwicmVhZF9vbmx5Ijp0cnVlLCJwcmV2ZW50X21hc3RlciI6dHJ1ZSwidHdpdGNoX2lkIjoiMTExMDc5Mzg5In0.JX6BN5JBP_quimXlKJvdPDfY0X_u9-ITTX0UwWodjrs'; 
+		  
+		//Connect to socket
+		const streamlabs = io(`https://sockets.streamlabs.com?token=${socketToken}`, {transports: ['websocket']});
+		  
+		//Perform Action on event
+		streamlabs.on('event', (eventData) => {
+
+				  console.log(eventData);
+				  
+				  
+				  if (eventData.type == 'subscription'){
+					$('#recSub').html(eventData.message[0].name)
+				  }
+				  if (eventData.type == 'donation'){
+					$('#recDono').html(eventData.message[0].name + ' ' + eventData.message[0].formatted_amount)
+					
+					if (eventData.message[0].amount > topD){
+					topD = eventData.message[0].amount
+					$('#topDono').html(eventData.message[0].name + ' ' + eventData.message[0].formatted_amount)
+					}
+				  }
+				  if (eventData.type == 'bits'){
+					$('#recBit').html(eventData.message[0].name + ' ' + eventData.message[0].amount + 'bits')
+					
+					if (parseInt(eventData.message[0].amount) > topB){
+					topB = parseInt(eventData.message[0].amount)
+					$('#topBit').html(eventData.message[0].name + ' ' + eventData.message[0].amount + 'bits')
+					}
+				  }
+				 
+		});
+	</script>
   </html>
